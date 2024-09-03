@@ -11,6 +11,9 @@ function auth(secret, scopes)
     flow = InstalledAppFlow.from_client_secrets_file(secret, scopes |> pylist)
     flow.run_local_server(port=0)
 end
+"""
+    build_service(secretpath, tokenpath, scopes, name, version)
+"""
 function build_service(secretpath, tokenpath, scopes, name, version)
     secretjson = JSON3.read(read(secretpath))
     if isfile(tokenpath)
