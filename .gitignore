@@ -2,4 +2,4 @@
 /.CondaPkg
 .DS_Store
 client_secret.json
-token.json
+token*.json

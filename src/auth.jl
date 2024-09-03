@@ -41,3 +41,12 @@ function build_service(secretpath, tokenpath, scopes, name, version)
     build = pyimport("googleapiclient.discovery").build
     build(name, version; credentials)
 end
+function build_service(secretpath, scopes, name, version)
+    tokenpath = create_tokenpath(secretpath)
+    build_service(secretpath, tokenpath, scopes, name, version)
+end
+function create_tokenpath(secretpath)
+    secretjson = JSON3.read(read(secretpath))
+    tokenfile = "token_$(secretjson.installed.client_id::String).json"
+    joinpath(splitdir(secretpath)[1], tokenfile)
+end
