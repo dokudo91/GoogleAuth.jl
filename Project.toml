@@ -1,0 +1,9 @@
+name = "GoogleAuth"
+uuid = "cab7b407-68f3-4b88-9377-6182b363bf1e"
+authors = ["dokudo91 <92647519+dokudo91@users.noreply.github.com>"]
+version = "0.1.0"
+
+[deps]
+CondaPkg = "992eb4ea-22a4-4c89-a5bb-47a3300528ab"
+JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
+PythonCall = "6099a3de-0909-46bc-b1f4-468b9a2dfc0d"
