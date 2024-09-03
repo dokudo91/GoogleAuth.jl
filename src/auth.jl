@@ -2,19 +2,28 @@ using PythonCall, CondaPkg
 #]conda add google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
 using JSON3
 
-const Credentials = pyimport("google.oauth2.credentials").Credentials
-const InstalledAppFlow = pyimport("google_auth_oauthlib.flow").InstalledAppFlow
-const Request = pyimport("google.auth.transport.requests").Request
-const build = pyimport("googleapiclient.discovery").build
-
 function auth(secret, scopes)
+    InstalledAppFlow = pyimport("google_auth_oauthlib.flow").InstalledAppFlow
     flow = InstalledAppFlow.from_client_secrets_file(secret, scopes |> pylist)
     flow.run_local_server(port=0)
 end
 """
     build_service(secretpath, tokenpath, scopes, name, version)
+
+```
+secretpath = "client_secret.json"
+tokenpath = "token.json"
+scopes = ["https://www.googleapis.com/auth/youtube.force-ssl"]
+name = "youtube"
+version = "v3"
+build_service(secretpath, tokenpath, scopes, name, version)
+```
 """
 function build_service(secretpath, tokenpath, scopes, name, version)
+    Credentials = pyimport("google.oauth2.credentials").Credentials
+    Request = pyimport("google.auth.transport.requests").Request
+    build = pyimport("googleapiclient.discovery").build
+
     secretjson = JSON3.read(read(secretpath))
     if isfile(tokenpath)
         credentials = Credentials.from_authorized_user_file(tokenpath, scopes |> pylist)
