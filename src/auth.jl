@@ -55,3 +55,18 @@ function create_tokenpath(secretpath)
     tokenfile = "token_$(secretjson.installed.client_id::String).json"
     joinpath(splitdir(secretpath)[1], tokenfile)
 end
+
+"""
+    google_error_reasons(e)
+"""
+function google_error_reasons(e)
+    reasons = String[]
+    try
+        json = JSON3.read(e.val.content)
+        for error in json.error.errors
+            push!(reasons, error.reason)
+        end
+    catch
+    end
+    reasons
+end
