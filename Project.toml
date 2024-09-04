@@ -4,6 +4,7 @@ authors = ["dokudo91 <92647519+dokudo91@users.noreply.github.com>"]
 version = "0.1.0"
 
 [deps]
-CondaPkg = "992eb4ea-22a4-4c89-a5bb-47a3300528ab"
+Conda = "8f4d0f93-b110-5947-807f-2305c1781a2d"
 JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
-PythonCall = "6099a3de-0909-46bc-b1f4-468b9a2dfc0d"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+PyCallUtils = "e1325381-314c-4124-8440-3da57ebb5f45"
